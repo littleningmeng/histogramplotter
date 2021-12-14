@@ -10,7 +10,7 @@ from bokeh.io import show
 
 
 def parse_histogram_file(filepath):
-    regex = re.compile(r"\s+([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)")
+    regex = re.compile(r"\s*([0-9.]+)[\s,]+([0-9.]+)[\s,]+([0-9.]+)[\s,]+([0-9.]+)")
     lines = [line for line in open(filepath, "r", encoding="utf-8") if re.match(regex, line)]
     values = [re.findall(regex, line)[0] for line in lines]
     pctles = [(float(v[0]), float(v[1]), int(v[2]), float(v[3])) for v in values]
